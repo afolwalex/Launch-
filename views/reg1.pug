@@ -1,0 +1,33 @@
+include includes/header.pug
+
+block content
+  link(rel="stylesheet" href="/stylesheets/reg.css")
+  body(class="home-body")
+    div(class="main pt-5")
+      div(class="container")
+        div(class="nav")
+          a(href="/" class="nav-logo") Launch
+        div(class="row justify-content-center")
+          div(class="col-md-7 mt-4")
+            div(class="box shadow-lg")
+              form(method="POST")
+                if errors 
+                  each error in errors 
+                    p(class='feedback-error')!=  error.msg
+                input(type="email" class="launch-form" placeholder="Email" id="email" name="email" required)
+                p(class="email-feedback")
+                input(type="text" class="launch-form" placeholder="Username" id="username" name="username" required)
+                p(class="username-feedback")
+                input(type="tel" class="launch-form" placeholder="Phone Number" id="number" name="number" required)
+                p(class="number-feedback")
+                input(type="checkbox" id="check")
+                span(class="pl-2") I have read the #[a(href="#" class="f-password") Terms and Conditions]
+                div(class="text-center pt-1")
+                  p
+                    button(type="submit" class="btn btn-custom mt-2" id="submit") Continue
+                  i(class="on-submit")
+            div(class="text-center step mt-5")
+              p Step 1 of 3
+
+    script(src="/javascripts/reg1.js" type="module")
+    include includes/footer.pug

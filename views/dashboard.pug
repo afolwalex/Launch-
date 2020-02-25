@@ -1,0 +1,51 @@
+include includes/header.pug
+
+block content
+  link(href="/stylesheets/style.css" rel="stylesheet")
+  body(class="home-body")
+    div(class="container pt-4")
+      div(class="nav float-left")
+        a(href="/" class="nav-logo") Launch
+      div(class="float-right pt-2")
+        a(href="/logout" class="login-btn") Logout
+      div(class="clearfix")
+      div(class="row")
+        div(class="col p-0 w-25")
+          div(class="col mt-2 p-3")
+            div(class="profile")
+              div(class="container")
+                h3(class="pb-4 text-center welcome") Welcome #{user.username}    
+                form(method="POST")
+                  div(class="row")
+                    div(class="col-md-6")
+                      -let imageSrc = "/uploads/profile/" + user.picture
+                      img(src=imageSrc height="160px" width="150px" class="float-left mb-2")
+                      div(class="clearfix")
+                      label(for="username" class='mt-2') User Name:
+                      input(type="text" class="profile-form mb-2" value=user.username)
+                      label(for="firstname") First Name:
+                      input(type="text" class="profile-form mb-2" value=user.firstName)
+                      label(for="lastname") Last Name:
+                      input(type="text" class="profile-form mb-2" value=user.lastName)
+                    div(class="col-md-6")
+                      label(for="email") Email:
+                      input(type="text" class="profile-form mb-3" value=user.email)
+                      label(for="lastname") Country:
+                      input(type="text" class="profile-form mb-3" value=user.country)
+                      label(for="state") State:
+                      input(type="text" class="profile-form mb-3" value=user.state)
+                      label(for="email") Telephone:
+                      input(type="text" class="profile-form" value=user.number)
+                      div(class="float-right mt-5")
+                        button(class='btn btn-custom') Update
+                                          
+                                        
+                                        
+
+        include includes/footer.pug
+        
+     
+    
+    
+            
+

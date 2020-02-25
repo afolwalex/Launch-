@@ -1,0 +1,18 @@
+include includes/header.pug
+
+block content
+  link(rel="stylesheet" href="/stylesheets/style.css")
+  body(class="home-body")
+    div(class="container pt-4")
+      div(class="nav float-left")
+        a(href="/" class="nav-logo") Launch
+      div(class="float-right pt-2")
+        a(href="/login" class="login-btn") Login
+      div(class="clearfix")
+      div(class="row justify-content-center")
+        div(class="col-md-7 main")
+          a(href="/register/1" class="btn btn-launch mb-3") Sign up with Launch
+          a(href="/register/1" class="btn btn-launch mb-3") Sign up with Google
+          a(href="/register/1" class="btn btn-launch mb-3") Sign up with Facebook
+    script(src="/javascripts/signup.js" type="module")
+    include includes/footer.pug

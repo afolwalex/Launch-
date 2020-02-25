@@ -1,0 +1,25 @@
+include includes/header.pug
+block content
+    link(href="/stylesheets/reg.css" rel="stylesheet")
+    body 
+      div.profile-background
+        div(class="container")
+          div(class="nav")
+            a(class="nav-logo") Launch
+          div(class="row justify-content-center")
+            div(class="col-md-7 text-center mt-5")
+              p(id="displayImage")
+              p(class="upload-text pt-2") Click the icon below to upload a picture. Max size of 1mb.
+              form(method='POST' enctype="multipart/form-data")
+                div(class="upload-wrap")
+                  i(class="fa fa-camera upload-area")
+                  input(type="file" name="picture" id="picture")
+                  p(class="picture-name")
+                div(class="text-center mt-2 mb-4")
+                  input(type="submit" class="btn btn-custom" value="Sign Up")
+              hr
+              div(class="text-center step mt-4")
+                p Step 3 of 3
+            
+      script(src="/javascripts/handleImage.js")    
+      include includes/footer.pug

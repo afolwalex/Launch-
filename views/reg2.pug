@@ -1,0 +1,40 @@
+include includes/header.pug
+
+block content
+  link(rel="stylesheet" href="/stylesheets/reg.css")
+  body(class="home-body")
+    div(class="main pt-5")
+      div(class="container")
+        div(class="nav")
+          a(href="/" class="nav-logo") Launch
+        div(class="row justify-content-center")
+          div(class="col-md-7 mt-4")
+            div(class="box shadow")
+              form(method="POST")
+                if errors 
+                  each error in errors 
+                    p(class='feedback-error')!=  error.msg
+                input(type="text" class="launch-form" placeholder="First Name" id="firstname" name="firstname" required)
+                p(class="firstname-feedback")
+                input(type="text" class="launch-form" placeholder="Last Name" id="lastname" name="lastname" required)
+                p(class="lastname-feedback")
+                input(type="password" class="launch-form" placeholder="Password" id="password" name="password" required)
+                p(class="password-feedback")
+                input(type="password" class="launch-form" placeholder="Confirm Password" id="cPassword" name="cPassword" required)
+                p(class="cPassword-feedback")
+                div(class="row")
+                  div(class="col-6")
+                    input(type="text" class="launch-form" placeholder="Country" id="country" name="country")
+                    p(class="country-feedback")
+                  div(class="col-6")
+                    input(type="text" class="launch-form" placeholder="State" id="state" name="state")
+                    p(class="state-feedback")
+                div(class="text-center pt-1")
+                  p 
+                    button(type="submit" class="btn btn-custom mt-2" id="submit") Continue
+                  i(class="on-submit")
+            div(class="text-center step mt-5")
+              p Step 2 of 3
+
+    script(src="/javascripts/reg2.js" type="module")
+    include includes/footer.pug
