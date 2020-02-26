@@ -6,6 +6,7 @@ const firstName  = selector("#firstname")
 const lastName  = selector("#lastname")
 const userPass  = selector("#password")
 const checkPass = selector("#cPassword")
+const answer = selector("#answer")
 
 firstName.addEventListener("blur" , event => {
 	const nameFeedBack = selector(".firstname-feedback")
@@ -95,14 +96,36 @@ checkPass.addEventListener("blur" , event => {
 	}
 })
 
+answer.addEventListener("blur" , event => {
+	const nameFeedBack = selector(".answer-feedback")
+	try {
+		if ( answer.value != null ){
+			if (nameFeedBack.classList.contains("feedback-error")) {
+				nameFeedBack.classList.remove("feedback-error")
+				nameFeedBack.textContent = "Okay!"
+	        	nameFeedBack.classList.add("feedback-success")
+			}	
+		}else {
+			throw {
+				name : "NameError " , 
+				message : "Please, provide an answer."
+			}
+        }
+	}catch(error) {
+		nameFeedBack.textContent = error.message
+		nameFeedBack.classList.add("feedback-error")
+	}
+})
+
 selector("#submit").addEventListener("click" , event => {	
 	const firstnameValue     = validateName(firstName.value.trim()).value
 	const lastnameValue     = validateName(lastName.value.trim()).value
 	const passValue     = validatePassword(userPass.value.trim()).value
-    const checkpassValue = validatePassword(checkPass.value.trim()).value
+	const checkpassValue = validatePassword(checkPass.value.trim()).value
+	const answerValue = answer.value.trim()
     const errorArea = selector(".on-submit")
 	try {
-		if (firstnameValue != null && lastnameValue != null && passValue != null && checkpassValue != null) {
+		if (firstnameValue != null && lastnameValue != null && passValue != null && checkpassValue != null && answerValue != null) {
 			console.log("Good!")  
 		}else {
 			throw {

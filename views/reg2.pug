@@ -22,6 +22,15 @@ block content
                 p(class="password-feedback")
                 input(type="password" class="launch-form" placeholder="Confirm Password" id="cPassword" name="cPassword" required)
                 p(class="cPassword-feedback")
+                select(class="launch-form")
+                  option(value="meal") What's your favorite meal?
+                  option(value="sport") Who's your favorite sportman?
+                  option(value="mother") What's your mother's maiden name?
+                  option(value="date") Your date of birth?
+                  option(value="any") Provide any secret you want.
+                p(class="select-feedback")
+                input(type="text" class="launch-form" placeholder="Secret Answer" id="answer" name="answer" required)
+                p(class="answer-feedback")
                 div(class="row")
                   div(class="col-6")
                     input(type="text" class="launch-form" placeholder="Country" id="country" name="country")

@@ -54,7 +54,7 @@
     width: 100%;
     outline: 0;
     border-width: 0 0 2px;
-    border-color: #E41B17;
+    border-color: rgba(228, 27, 23, 0.3);
     background: transparent;
     color: #f0f0f0;
   }
