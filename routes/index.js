@@ -25,6 +25,10 @@ router.post('/register/2', UserController.postSecondDetails)
 router.get('/register/3' , UserController.getThirdDetails)
 router.post('/register/3', upload.single('picture'), UserController.postThirdDetails)
 router.get('/profile' , UserController.getDashboard)
+router.post('/profile' , UserController.updateDetails)
 router.get('/logout', UserController.getLogout)
-
+router.get('/reset-password', UserController.resetPage)
+router.post('/reset-password', UserController.postReset)
+router.get('/reset-password/:url', UserController.newPasswordPage)
+router.post('/reset-password/:url', UserController.setNewPassword)
 module.exports = router;

@@ -10,20 +10,15 @@ block content
         div(class="row justify-content-center")
           div(class="col-md-7 mt-4")
             div(class="box shadow-lg")
-              h3(class="text-center font-italic mb-3") Welcome back
+              h5(class="text-center font-italic mb-5") Enter your registered email and your secret answer
               form(method="POST")
                 if error 
                   p(class='feedback-error') #{error}
                 input(type="email" class="launch-form" placeholder="Email" id="email" name="email" required)
-                p(class="email-feedback")
-                input(type="password" class="launch-form" placeholder="Password" id="password" name="password" required)
-                p(class="username-feedback")
-                div(class="float-right")
-                  a(href="/reset-password" class="f-password italic-text") Forgot Password?
-                div(class="clearfix")
-                div(class="text-center pt-1")
+                input(type="text" class="launch-form mt-3" placeholder="Secret Answer" id="answer" name="answer" required)
+                div(class="text-center mt-2")
                   p
-                    button(type="submit" class="btn btn-custom mt-2" id="submit") Log in
+                    button(type="submit" class="btn btn-custom mt-2" id="submit") Confirm
                   i(class="on-submit")
 
     include includes/footer.pug

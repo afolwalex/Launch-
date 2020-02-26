@@ -95,6 +95,7 @@ class App {
                         firstName: req.body.firstname,
                         lastName : req.body.lastname,
                         password : userPass,
+                        secret : req.body.answer,
                         country : req.body.country,
                         state : req.body.state
                     }, {new : true, useAndModify : false}, (err , item) => {
@@ -194,6 +195,40 @@ class App {
         }
     ]
 
+    updateDetails = async (req, res, next) => {
+        if(req.session.email){
+            try{
+                let user = await User.findOne({email : req.session.email})
+                if(user){
+                    let userID = user._id
+                    User.findByIdAndUpdate(userID, {
+                        firstName: req.body.firstname,
+                        lastName : req.body.lastname,
+                        country : req.body.country,
+                        state : req.body.state
+                    }, {new : true, useAndModify : false}, (err , item) => {
+                        if(err){
+                          res.status(500)
+                          return
+                        }else {
+                            res.render('dashboard', {message : "Details has been successfully updated. You can reload your page now.", user: user})
+                        }
+                        })
+                }else{  
+                    throw{
+                        name : "User Error",
+                        message : "User not found"
+                    }
+                }
+            }catch(err){
+              res.json({error : error.message})
+            }
+        }else {
+            res.redirect(303 , '/')
+            return 
+        }
+    }
+
     getLogout = (req , res , next ) => {
         try {
             if (req.session.email) {
@@ -205,6 +240,72 @@ class App {
         }catch(error) {
           res.status(400).json({message : error})
 
+        }
+    }
+
+    resetPage = (req , res , next) => {
+		res.render('reset' , { title  : "Reset Password" })
+    }
+
+    postReset = [
+        sanitizeBody('*').escape() , 
+        async (req , res , next) => {
+            try { 
+                let user = await User.findOne({email : req.body.email})
+                if(user){
+                    if(user.secret === req.body.answer){
+                        req.session.email = user.email 
+                        res.redirect(303, user.url)
+                    }else {
+                        res.render('reset' , { error : 'Wrong Secret Answer'})
+                    }
+                }else{
+                    res.render('reset', {error : "Email isn't registered"})
+                }
+            }catch(errors) {
+                res.render('reset' , {error : errors})
+            }
+        }
+    ]
+
+    newPasswordPage = (req , res , next) => {
+        if(req.session.email){
+            res.render('new-password' , { title  : "Reset Password" })
+        }else{
+            res.render("notfound")
+        }
+    }
+
+    setNewPassword = async (req, res, next) => {
+        if(req.session.email){
+            try{
+                let user = await User.findOne({username : req.params.url})
+                if(user){
+                    let userID = user._id
+                    let userPass = await bcrypt.hash(req.body.password , 10)
+                    User.findByIdAndUpdate(userID, {
+                        password : userPass
+                    }, {new : true, useAndModify : false}, (err , item) => {
+                        if(err){
+                          res.status(500)
+                          return
+                        }else {
+                            delete req.session.email
+                            res.redirect(303, '/login')
+                        }
+                        })
+                }else{  
+                    throw{
+                        name : "User Error",
+                        message : "User not found"
+                    }
+                }
+            }catch(err){
+              res.json({error : error.message})
+            }
+        }else {
+            res.redirect(303 , '/')
+            return 
         }
     }
 

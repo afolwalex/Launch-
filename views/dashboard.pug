@@ -17,30 +17,31 @@ block content
                 h3(class="pb-4 text-center welcome") Welcome #{user.username}    
                 form(method="POST")
                   div(class="row")
-                    div(class="col-md-6")
+                    div(class="col-md-6 mb-2")
                       -let imageSrc = "/uploads/profile/" + user.picture
                       img(src=imageSrc height="160px" width="150px" class="float-left mb-2")
                       div(class="clearfix")
                       label(for="username" class='mt-2') User Name:
-                      input(type="text" class="profile-form mb-2" value=user.username)
-                      label(for="firstname") First Name:
-                      input(type="text" class="profile-form mb-2" value=user.firstName)
-                      label(for="lastname") Last Name:
-                      input(type="text" class="profile-form mb-2" value=user.lastName)
-                    div(class="col-md-6")
+                      input(type="text" class="profile-form mb-2" value=user.username disabled="disbaled")
                       label(for="email") Email:
-                      input(type="text" class="profile-form mb-3" value=user.email)
-                      label(for="lastname") Country:
-                      input(type="text" class="profile-form mb-3" value=user.country)
-                      label(for="state") State:
-                      input(type="text" class="profile-form mb-3" value=user.state)
-                      label(for="email") Telephone:
-                      input(type="text" class="profile-form" value=user.number)
-                      div(class="float-right mt-5")
-                        button(class='btn btn-custom') Update
-                                          
-                                        
-                                        
+                      input(type="text" class="profile-form mb-3" value=user.email disabled="disbaled")
+                      label(for="telephone") Telephone:
+                      input(type="text" class="profile-form" value=user.number disabled="disbaled")
+                    div(class="col-md-6 mb-2")
+                      form(method="POST")
+                        label(for="firstname") First Name:
+                        input(type="text" class="profile-form mb-2" value=user.firstName name="firstname")
+                        label(for="lastname") Last Name:
+                        input(type="text" class="profile-form mb-2" value=user.lastName name="lastname")
+                        label(for="country") Country:
+                        input(type="text" class="profile-form mb-3" value=user.country name="country")
+                        label(for="state") State:
+                        input(type="text" class="profile-form mb-3" value=user.state name="state")
+                        div(class="float-right mt-3 mb-3")
+                          button(class='btn btn-custom' type="submit") Update     
+                        div(class="clearfix")
+                        if message
+                          p(class="font-italic") #{message}                             
 
         include includes/footer.pug
         

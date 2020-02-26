@@ -12,7 +12,10 @@ block content
       div(class="row justify-content-center")
         div(class="col-md-7 main")
           a(href="/register/1" class="btn btn-launch mb-3") Sign up with Launch
-          a(href="/register/1" class="btn btn-launch mb-3") Sign up with Google
-          a(href="/register/1" class="btn btn-launch mb-3") Sign up with Facebook
-    script(src="/javascripts/signup.js" type="module")
+          a(href="#" class="btn btn-launch" id="google") Sign up with Google
+          p(class="font-italic google-message")
+          a(href="#" class="btn btn-launch" id="facebook") Sign up with Facebook
+          p(class="font-italic facebook-message")
+
+    script(src="/javascripts/index.js")
     include includes/footer.pug
