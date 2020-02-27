@@ -12,6 +12,10 @@ body{
 }
 .box{
     padding: 40px;
+    background: #202020;
+}
+.down{
+    margin-top: 5rem;
 }
 .btn-custom{
     background: #E41B17;
@@ -88,4 +92,9 @@ body{
 }
 hr{
     background: rgba(255, 255, 255, 0.2);
+}
+@media (max-width: 450px){
+    .box{
+        padding: 20px 15px;
+    }
 }
