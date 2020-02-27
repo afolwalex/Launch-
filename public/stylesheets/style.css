@@ -34,12 +34,15 @@
     position: absolute;
     width: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
+.box-home{
+    background: #202020;
+    padding: 20px;
+}
 .btn-launch {
-    background: #E41B17;
+    background:#107c10;
     color: #FFFFFF;
     text-transform: uppercase;
     width: 230px;
@@ -49,6 +52,20 @@
     background: rgb(228, 15, 11);
     color: #FFFFFF;
     text-decoration: none;
+}
+.btn-google {
+    background: #E41B17;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    width: 230px;
+    text-align: center;
+}
+.btn-facebook {
+    background:#3b5998;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    width: 230px;
+    text-align: center;
 }
 .profile-form{
     width: 100%;

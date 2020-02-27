@@ -6,16 +6,20 @@ block content
     div(class="container pt-4")
       div(class="nav float-left")
         a(href="/" class="nav-logo") Launch
-      div(class="float-right pt-2")
+      div(class="float-right pt-2 mr-3")
         a(href="/login" class="login-btn") Login
       div(class="clearfix")
+    div.container
       div(class="row justify-content-center")
         div(class="col-md-7 main")
-          a(href="/register/1" class="btn btn-launch mb-3") Sign up with Launch
-          a(href="#" class="btn btn-launch" id="google") Sign up with Google
-          p(class="font-italic google-message")
-          a(href="#" class="btn btn-launch" id="facebook") Sign up with Facebook
-          p(class="font-italic facebook-message")
+          div(class="box-home")
+            p
+            a(href="/register/1" class="btn btn-launch") Sign up with Launch
+            p(class="font-italic google-message")
+            a(href="#" class="btn btn-google" id="google") Sign up with Google
+            p(class="font-italic google-message")
+            a(href="#" class="btn btn-facebook" id="facebook") Sign up with Facebook
+            p(class="font-italic facebook-message")
 
-    script(src="/javascripts/index.js")
-    include includes/footer.pug
+  script(src="/javascripts/index.js")
+  include includes/footer.pug
